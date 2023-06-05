@@ -16,21 +16,31 @@ namespace NavTree2.ViewModels
         public NavigationTreeViewModel()
         {
             // 논리 드라이브를 구한다.
-            var children = Directory.GetLogicalDrives()
-                .Select(drive => new TreeItemViewModel
-                {
-                    FullPath = drive
-                }).ToList();
-
-            //foreach (var child in children)
-            //{
-            //    Debug.WriteLine(child.FullPath);
-            //}
+            var children = Directory.GetLogicalDrives();
+               
 
             this.Items = new ObservableCollection<TreeItemViewModel>(
-                    children.Select(drive => new TreeItemViewModel(drive.FullPath))
-                );
-            //this.Items = new ObservableCollection<TreeItemViewModel>(children);
+                    children.Select(x => new TreeItemViewModel
+                    {
+                        FullPath = x,
+                        Name = x,
+                        Children = new ObservableCollection<TreeItemViewModel>
+                        {
+                            new TreeItemViewModel {}
+                        }
+                    }
+                ));
+
+            //foreach ( var child in children ) {
+            //    TreeItemViewModel treeItemViewModel = new TreeItemViewModel
+            //    {
+            //        FullPath = child,
+            //        Name = child,
+            //        Children = new ObservableCollection<TreeItemViewModel>()
+            //    };
+            //    treeItemViewModel.Children.Add(null);
+            //    this.Items.Add(treeItemViewModel);
+            //}
 
         }
     }

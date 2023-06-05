@@ -29,10 +29,13 @@ namespace NavTree2.ViewModels
 
         public bool IsExpanded
         {
-            get { return isExpanded; }
-            set { 
+            get {
+                return isExpanded;
+            }
+            set {
+                Debug.WriteLine($"IsExpanded:{value}");
                 SetProperty(ref isExpanded, value);
-                Debug.WriteLine("value:" + value);
+
                 if (value == true)
                 {
                     Expand();
@@ -40,22 +43,28 @@ namespace NavTree2.ViewModels
                 {
                     ClearChildren();
                 }
+                
             }
         }
 
         private void Expand()
         {
             var children = DirectoryUtils.GetDirectoryContents(fullPath);
-            this.Children = new ObservableCollection<TreeItemViewModel>();
-            foreach (var child in children)
+            this.Children.Clear();
+            children.ForEach(d =>
             {
-                this.Children.Add(child);
-            }
-                //children.Select(content => new TreeItemViewModel
-                //{
-                //    FullPath = content.FullPath,
-                //    Name = content.Name
-                //}));
+                var treeItemModel = new TreeItemViewModel
+                {
+                    FullPath = d,
+                    Name = DirectoryUtils.GetFileFolderName(d),
+                    Children = new ObservableCollection<TreeItemViewModel>
+                    {
+                        new TreeItemViewModel { }
+                    }
+                };
+                this.Children.Add(treeItemModel);
+            });
+
         }
 
         private void ClearChildren()
@@ -68,13 +77,13 @@ namespace NavTree2.ViewModels
 
         public TreeItemViewModel()
         {
-
+            //Debug.WriteLine("TreeItemViewModel");
         }
 
-        public TreeItemViewModel(string fullPath)
-        {
-            FullPath = fullPath;
-            Name = fullPath;
-        }
+        //public TreeItemViewModel(string fullPath)
+        //{
+        //    FullPath = fullPath;
+        //    Name = fullPath;
+        //}
     }
 }

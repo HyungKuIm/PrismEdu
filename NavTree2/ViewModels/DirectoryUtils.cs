@@ -9,20 +9,16 @@ namespace NavTree2.ViewModels
 {
     public static class DirectoryUtils
     {
-        public static List<TreeItemViewModel> GetDirectoryContents(string fullPath)
+        public static List<string> GetDirectoryContents(string fullPath)
         {
-            var list = new List<TreeItemViewModel>();
+            var list = new List<string>();
 
             try
             {
                 var dirs = Directory.GetDirectories(fullPath);
                 if (dirs.Length > 0)
                 {
-                    list.AddRange(dirs.Select(dir => new TreeItemViewModel
-                    {
-                        FullPath = dir,
-                        Name = GetFileFolderName(dir)
-                    }));
+                    list.AddRange(dirs);
                 }
             } catch { }
 
