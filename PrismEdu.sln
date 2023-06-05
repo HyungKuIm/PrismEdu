@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismEdu", "PrismEdu\PrismEdu.csproj", "{AA12637C-476B-4D09-A9B2-912AEAABD22D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavTree", "NavTree\NavTree.csproj", "{F4EFC1F4-9B09-4CA0-970C-468D9B54FEE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavTree2", "NavTree2\NavTree2.csproj", "{5C4C6DE6-9A1A-440A-9BA4-3C77122D6060}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA12637C-476B-4D09-A9B2-912AEAABD22D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA12637C-476B-4D09-A9B2-912AEAABD22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA12637C-476B-4D09-A9B2-912AEAABD22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA12637C-476B-4D09-A9B2-912AEAABD22D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4EFC1F4-9B09-4CA0-970C-468D9B54FEE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4EFC1F4-9B09-4CA0-970C-468D9B54FEE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4EFC1F4-9B09-4CA0-970C-468D9B54FEE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4EFC1F4-9B09-4CA0-970C-468D9B54FEE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C4C6DE6-9A1A-440A-9BA4-3C77122D6060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C4C6DE6-9A1A-440A-9BA4-3C77122D6060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C4C6DE6-9A1A-440A-9BA4-3C77122D6060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C4C6DE6-9A1A-440A-9BA4-3C77122D6060}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E58ACAC9-1F29-4E7F-8B27-526DF40CB3EB}
+	EndGlobalSection
+EndGlobal
