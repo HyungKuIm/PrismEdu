@@ -9,11 +9,16 @@
         <TreeView x:Name="FolderView">
             <TreeView.Resources>
                 <Style TargetType="{x:Type TreeViewItem}">
+                    <!--<Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=IsExpanded}" Value="True">
+                            <Setter TargetName="MyDriveFolderImage" Property="Source" Value="Images/folder-open.png" />
+                        </DataTrigger>
+                    </Style.Triggers>-->
                     <Setter Property="HeaderTemplate">
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Width="20" Margin="3"
+                                    <Image Width="20" Margin="3" x:Name="MyDriveFolderImage"
                                            Source="{Binding 
                                                 RelativeSource={RelativeSource Mode=FindAncestor, 
                                                                 AncestorType={x:Type TreeViewItem}}, 
@@ -21,7 +26,13 @@
                                                 Converter={x:Static converters:HeaderToImageConverter.Instance}}" />
                                     <TextBlock VerticalAlignment="Center" Text="{Binding}" />
                                 </StackPanel>
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type TreeViewItem}}, Path=IsExpanded}" Value="True">
+                                        <Setter TargetName="MyDriveFolderImage" Property="Source" Value="../Images/folder-open.png" />
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
                             </DataTemplate>
+                            
                         </Setter.Value>
                     </Setter>
                 </Style>
