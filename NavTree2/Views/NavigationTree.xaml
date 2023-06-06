@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"
              xmlns:vm="clr-namespace:NavTree2.ViewModels"
+             xmlns:converters="clr-namespace:NavTree2.Converters"
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
         <TreeView x:Name="FolderView" ItemsSource="{Binding Items}">
@@ -14,7 +15,11 @@
             
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Children}" DataType="{x:Type vm:TreeItemViewModel}">
+                    
                     <StackPanel Orientation="Horizontal">
+                        <Image Width="20" Margin="3"
+                                           Source="{Binding FullPath,
+                                                Converter={x:Static converters:HeaderToImageConverter.Instance}}" />
                         <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
                     </StackPanel>
                 </HierarchicalDataTemplate>

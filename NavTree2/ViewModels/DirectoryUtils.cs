@@ -22,6 +22,17 @@ namespace NavTree2.ViewModels
                 }
             } catch { }
 
+
+            try
+            {
+                var fs = Directory.GetFiles(fullPath);
+                if (fs.Length > 0)
+                {
+                    list.AddRange(fs);
+                }
+            } catch { } 
+
+
             return list;
         }
 

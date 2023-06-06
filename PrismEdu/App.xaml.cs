@@ -1,4 +1,5 @@
-﻿using NavTree2;
+﻿using NavTree;
+using NavTree2;
 using Prism.Ioc;
 using Prism.Modularity;
 using PrismEdu.Views;
@@ -23,7 +24,8 @@ namespace PrismEdu
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<NavTree2Module>();
+            //moduleCatalog.AddModule<NavTree2Module>();
+            moduleCatalog.AddModule<NavTreeModule>();
         }
     }
 }

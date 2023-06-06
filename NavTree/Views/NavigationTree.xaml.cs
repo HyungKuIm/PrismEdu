@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System;
+using System.Windows.Documents;
 
 namespace NavTree.Views
 {
@@ -39,10 +40,13 @@ namespace NavTree.Views
         {
             var item = (TreeViewItem)sender;
 
-            if (item.Items.Count != 1 || item.Items[0] != null)
+            // 이 부분이 없으면 재귀가 멈추지 않음 /////
+            // 아이템이 더미 아이템만 가질 경우 리턴된다는 의미
+            if (item.Items.Count != 1 || item.Items[0] != null) 
             {
                 return;
             }
+            //////////////////////////////////////////
 
             item.Items.Clear();
 
@@ -58,6 +62,16 @@ namespace NavTree.Views
                     directories.AddRange(dirs);
                 }
             } catch { }
+
+            try
+            {
+                var fs = Directory.GetFiles(fullPath);
+                if (fs.Length > 0)
+                {
+                    directories.AddRange(fs);
+                }
+            }
+            catch { }
 
             directories.ForEach(d =>
             {
