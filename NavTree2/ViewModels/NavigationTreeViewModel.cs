@@ -24,6 +24,7 @@ namespace NavTree2.ViewModels
                     {
                         FullPath = x,
                         Name = x,
+                        Type = DirectoryItemType.Drive,
                         Children = new ObservableCollection<TreeItemViewModel>
                         {
                             new TreeItemViewModel {}

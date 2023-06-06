@@ -24,8 +24,8 @@ namespace PrismEdu
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            //moduleCatalog.AddModule<NavTree2Module>();
-            moduleCatalog.AddModule<NavTreeModule>();
+            moduleCatalog.AddModule<NavTree2Module>();
+            //moduleCatalog.AddModule<NavTreeModule>();
         }
     }
 }

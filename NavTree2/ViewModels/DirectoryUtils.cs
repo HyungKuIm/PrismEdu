@@ -53,5 +53,23 @@ namespace NavTree2.ViewModels
 
             return path.Substring(lastIndex + 1);
         }
+
+        public static DirectoryItemType GetDirType(string path)
+        {
+            var name = GetFileFolderName(path);
+
+            var type = DirectoryItemType.File;
+
+            if (string.IsNullOrEmpty(name))
+            {
+                type = DirectoryItemType.Drive;
+            }
+            else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
+            {
+                type = DirectoryItemType.Folder;
+            }
+
+            return type;
+        }
     }
 }

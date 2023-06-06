@@ -10,20 +10,40 @@ namespace NavTree2.ViewModels
 {
     public class TreeItemViewModel : BindableBase
     {
-        //public string FullPath { get; set; }
-        private string fullPath;
-        public string FullPath
+        public string FullPath { get; set; }
+        //private string fullPath;
+        //public string FullPath
+        //{
+        //    get { return fullPath; }
+        //    set { SetProperty(ref fullPath, value); }
+        //}
+        public string Name { get; set; }
+        //private string name;
+        //public string Name
+        //{
+        //    get { return name; }
+        //    set { SetProperty(ref name, value); }
+        //}
+
+        public DirectoryItemType Type { get; set; }
+        //private DirectoryItemType type;
+        //public DirectoryItemType Type
+        //{ 
+        //    get { return type; } 
+        //    set { 
+        //        SetProperty(ref type, value);
+        //    }
+        //}
+
+
+        private string imageName;
+        public string ImageName
         {
-            get { return fullPath; }
-            set { SetProperty(ref fullPath, value); }
+            get { return Type == DirectoryItemType.Drive ? "drive" : (Type == DirectoryItemType.File ? "file" : (isExpanded ? "folder-open" : "folder-closed")); }
+            set { SetProperty(ref imageName, value); }
         }
-        //public string Name { get; set; }
-        private string name;
-        public string Name
-        {
-            get { return name; }
-            set { SetProperty(ref name, value); }
-        }
+
+       
 
         private bool isExpanded;
 
@@ -36,12 +56,15 @@ namespace NavTree2.ViewModels
                 Debug.WriteLine($"IsExpanded:{value}");
                 SetProperty(ref isExpanded, value);
 
+
                 if (value == true)
                 {
                     Expand();
+                    ImageName = "folder-open";
                 } else
                 {
                     ClearChildren();
+                    ImageName = "folder-closed";
                 }
                 
             }
@@ -49,7 +72,7 @@ namespace NavTree2.ViewModels
 
         private void Expand()
         {
-            var children = DirectoryUtils.GetDirectoryContents(fullPath);
+            var children = DirectoryUtils.GetDirectoryContents(FullPath);
             this.Children.Clear();
             children.ForEach(d =>
             {
@@ -57,6 +80,7 @@ namespace NavTree2.ViewModels
                 {
                     FullPath = d,
                     Name = DirectoryUtils.GetFileFolderName(d),
+                    Type = DirectoryUtils.GetDirType(d),
                     Children = new ObservableCollection<TreeItemViewModel>
                     {
                         new TreeItemViewModel { }
@@ -78,6 +102,7 @@ namespace NavTree2.ViewModels
         public TreeItemViewModel()
         {
             //Debug.WriteLine("TreeItemViewModel");
+            //ImageName = Type == DirectoryItemType.Drive ? "drive" : (Type == DirectoryItemType.File ? "file" : (IsExpanded ? "folder-open" : "folder-closed"));
         }
 
         //public TreeItemViewModel(string fullPath)

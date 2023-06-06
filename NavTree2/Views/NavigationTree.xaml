@@ -18,7 +18,7 @@
                     
                     <StackPanel Orientation="Horizontal">
                         <Image Width="20" Margin="3"
-                                           Source="{Binding FullPath,
+                                           Source="{Binding ImageName,
                                                 Converter={x:Static converters:HeaderToImageConverter.Instance}}" />
                         <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
                     </StackPanel>

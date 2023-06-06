@@ -18,25 +18,15 @@ namespace NavTree2.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var path = (string)value;
+            var image = (string)value;
 
-            if (path == null) {
+            if (image == null) {
                 return null;
             }
 
-            var name = DirectoryUtils.GetFileFolderName(path);
-
-            var image = "Images/file.png";
-
-            if (string.IsNullOrEmpty(name))
-            {
-                image = "Images/drive.png";
-            } else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory)) 
-            {
-                image = "Images/folder-closed.png";
-            }
+            
             //pack://application:,,,/ReferencedAssembly;component/Subfolder/ResourceFile.xaml
-            return new BitmapImage(new Uri($"pack://application:,,,/NavTree2;component/{image}"));
+            return new BitmapImage(new Uri($"pack://application:,,,/NavTree2;component/Images/{image}.png"));
 
         }
 
